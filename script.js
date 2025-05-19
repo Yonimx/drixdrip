@@ -1,154 +1,85 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Sample product data
-    const products = [
-        {
-            id: 1,
-            title: "Premium T-Shirt",
-            price: 1299,
-            category: "MEN",
-            sizes: ["S", "M", "L", "XL"],
-            colors: ["Black", "White"]
-        },
-        {
-            id: 2,
-            title: "Classic Jeans",
-            price: 2499,
-            category: "WOMEN",
-            sizes: ["XS", "S", "M"],
-            colors: ["Blue", "Black"]
-        },
-        {
-            id: 3,
-            title: "Sports Jacket",
-            price: 3599,
-            category: "MEN",
-            sizes: ["M", "L", "XL", "XXL"],
-            colors: ["Red", "Blue"]
-        },
-        {
-            id: 4,
-            title: "Summer Dress",
-            price: 1999,
-            category: "WOMEN",
-            sizes: ["XS", "S", "M", "L"],
-            colors: ["Yellow", "Pink"]
-        },
-        {
-            id: 5,
-            title: "Casual Polo",
-            price: 1599,
-            category: "MEN",
-            sizes: ["S", "M", "L"],
-            colors: ["Green", "Navy"]
-        }
-    ];
+const images = document.querySelectorAll('.carousel img');
+const prevBtn = document.querySelector('.carousel-nav.prev');
+const nextBtn = document.querySelector('.carousel-nav.next');
+const dots = document.querySelectorAll('.dot');
+let current = 0;
+let interval;
 
-    const productsContainer = document.getElementById('productsContainer');
-    const clearAllBtn = document.getElementById('clearAll');
-    const applyFiltersBtn = document.getElementById('applyFilters');
-    const subscribeBtn = document.getElementById('subscribe');
+function showSlide(index) {
+    images[current].classList.remove('active');
+    dots[current].classList.remove('active-dot');
 
-    // Render all products initially
-    renderProducts(products);
+    current = (index + images.length) % images.length;
 
-    // Clear all filters
-    clearAllBtn.addEventListener('click', function() {
-        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
-            checkbox.checked = false;
-        });
-        document.querySelectorAll('input[type="radio"]').forEach(radio => {
-            radio.checked = false;
-        });
-        document.getElementById('minPrice').value = '';
-        document.getElementById('maxPrice').value = '';
-        renderProducts(products);
-    });
+    images[current].classList.add('active');
+    dots[current].classList.add('active-dot');
+}
 
-    // Apply filters
-    applyFiltersBtn.addEventListener('click', filterAndRenderProducts);
+function nextSlide() {
+    showSlide(current + 1);
+}
 
-    // Subscribe button
-    subscribeBtn.addEventListener('click', function() {
-        const email = document.querySelector('input[type="email"]').value;
-        if (email && email.includes('@')) {
-            alert('Thank you for subscribing!');
-        } else {
-            alert('Please enter a valid email address.');
-        }
-    });
+function prevSlide() {
+    showSlide(current - 1);
+}
 
-    // Helper function to get selected checkbox values
-    function getSelectedValues(name) {
-        const checkboxes = document.querySelectorAll(`input[name="${name}"]:checked`);
-        return Array.from(checkboxes).map(checkbox => checkbox.value);
-    }
+function goToSlide(index) {
+    showSlide(index);
+    resetAutoSlide();
+}
 
-    // Filter and render products
-    function filterAndRenderProducts() {
-        const selectedCategories = getSelectedValues('category');
-        const selectedSizes = getSelectedValues('size');
-        const minPrice = parseFloat(document.getElementById('minPrice').value) || 0;
-        const maxPrice = parseFloat(document.getElementById('maxPrice').value) || Infinity;
-        const sortOption = document.querySelector('input[name="sort"]:checked')?.value;
+function startAutoSlide() {
+    interval = setInterval(nextSlide, 3000);
+}
 
-        let filteredProducts = products.filter(product => {
-            if (selectedCategories.length > 0 && !selectedCategories.includes(product.category)) {
-                return false;
-            }
-            if (selectedSizes.length > 0) {
-                const hasSize = selectedSizes.some(size => product.sizes.includes(size));
-                if (!hasSize) return false;
-            }
-            if (product.price < minPrice || product.price > maxPrice) {
-                return false;
-            }
-            return true;
-        });
+function resetAutoSlide() {
+    clearInterval(interval);
+    startAutoSlide();
+}
 
-        if (sortOption === 'low-high') {
-            filteredProducts.sort((a, b) => a.price - b.price);
-        } else if (sortOption === 'high-low') {
-            filteredProducts.sort((a, b) => b.price - a.price);
-        }
-
-        renderProducts(filteredProducts);
-    }
-
-    // Attach event listeners to all filter checkboxes and radios
-    document.querySelectorAll('input[name="category"], input[name="size"], input[name="sort"]').forEach(input => {
-        input.addEventListener('change', filterAndRenderProducts);
-    });
-
-    // Also update when price inputs change
-    document.getElementById('minPrice').addEventListener('input', filterAndRenderProducts);
-    document.getElementById('maxPrice').addEventListener('input', filterAndRenderProducts);
-
-    // Render products to the page
-    function renderProducts(productsToRender) {
-        productsContainer.innerHTML = '';
-        
-        if (productsToRender.length === 0) {
-            productsContainer.innerHTML = '<p>No products match your filters.</p>';
-            return;
-        }
-
-        productsToRender.forEach(product => {
-            const productCard = document.createElement('div');
-            productCard.className = 'product-card';
-            productCard.innerHTML = `
-                <h3>${product.title}</h3>
-                <div class="price">PHP ${product.price.toFixed(2)}</div>
-                <div class="color-options">${product.colors.length} color options</div>
-                <div class="size-options">Available sizes: ${product.sizes.join(', ')}</div>
-            `;
-            productsContainer.appendChild(productCard);
-        });
-    }
-    
-    
-    
-    
-    
-    
-    
+prevBtn.addEventListener('click', () => {
+    prevSlide();
+    resetAutoSlide();
 });
+
+nextBtn.addEventListener('click', () => {
+    nextSlide();
+    resetAutoSlide();
+});
+
+startAutoSlide();
+
+// Collection carousels functionality
+function setupCarousel(carouselIndex) {
+    const collection = document.querySelectorAll('.carousel-collection')[carouselIndex];
+    const scrollPrev = document.querySelectorAll('.carousel-scroll.prev')[carouselIndex];
+    const scrollNext = document.querySelectorAll('.carousel-scroll.next')[carouselIndex];
+
+    scrollPrev.addEventListener('click', () => {
+    collection.scrollBy({
+        left: -300,
+        behavior: 'smooth'
+    });
+    });
+
+    scrollNext.addEventListener('click', () => {
+    collection.scrollBy({
+        left: 300,
+        behavior: 'smooth'
+    });
+    });
+
+    // Optional: Hide buttons when at scroll extremes
+    collection.addEventListener('scroll', () => {
+    scrollPrev.style.display = collection.scrollLeft <= 10 ? 'none' : 'flex';
+    scrollNext.style.display = collection.scrollLeft + collection.clientWidth >= 
+        collection.scrollWidth - 10 ? 'none' : 'flex';
+    });
+
+    // Initial check
+    scrollPrev.style.display = 'none';
+}
+
+// Initialize both carousels
+setupCarousel(0); // Men's Collection
+setupCarousel(1); // Women's Collection
