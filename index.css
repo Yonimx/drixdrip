@@ -171,18 +171,19 @@
 
 .carousel-collection {
   display: flex;
-  gap: 25px;
   overflow-x: auto;
+  scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  padding-bottom: 20px;
-  scrollbar-width: none;
-}
-
-.carousel-collection::-webkit-scrollbar {
-  display: none;
+  -webkit-overflow-scrolling: touch;
+  gap: 1rem;
+  padding-bottom: 1rem;
 }
 
 .collection-item {
+  flex: 0 0 80vw; /* Show one item at a time on mobile */
+  max-width: 350px;
+  scroll-snap-align: center;
+  margin: 0 auto;
   min-width: 280px;
   height: 380px;
   background: white;
