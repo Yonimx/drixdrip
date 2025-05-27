@@ -407,7 +407,7 @@ const products = {
         inStock: true
     },
     "merino-polo": {
-        img: "../images/collection/p5.jpg",
+        img: "../images/collection/p5.avif",
         name: "Merino Wool Polo",
         category: "MEN",
         reviews: 231,
