@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Drix Drip Store - My Account</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Drix Drip Store - Customer Service</title>
   <link href="https://fonts.googleapis.com/css2?family=Helvetica&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="account.css" />
-   
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="costumer.css">
     <link rel="stylesheet" href="../header-footer.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
@@ -82,40 +82,79 @@
   </header>
 
 
+  <!-- Main Content -->
+  <div class="service-container">
+    <!-- FAQ Section -->
+    <div class="service-section">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>What is your return policy?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          <p>We offer 30-day returns for unused items with original tags attached. Please contact our support team to initiate a return.</p>
+        </div>
+      </div>
 
-  <!-- Account Content -->
-  <div class="account-container">
-    <h1 class="account-title">My Account</h1>
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>How long does shipping take?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Standard shipping takes 3-5 business days. Express shipping options are available at checkout.</p>
+        </div>
+      </div>
 
-    <div class="account-section">
-      <h3>Account Information</h3>
-      <p><strong>Name:</strong></p>
-      <input type="text" placeholder="John Hendrix">
-
-      <p><strong>Email:</strong></p>
-      <input type="email" placeholder="JohnHendrix@example.com">
-
-      <p><strong>Phone:</strong></p>
-      <input type="number" placeholder="0915-123-456">
-
-      <a class="btns" href="#">Save Changes</a>
+      <!-- Add more FAQ items as needed -->
     </div>
 
-    <div class="account-section">
-      <h3>Order History</h3>
-      <p>View and manage your past orders.</p>
-      <a class="btns" href="#">View All Orders</a>
-    </div>
+    <!-- Customer Support Section -->
+    <div class="service-section">
+      <h2 class="section-title">Contact Support</h2>
+      
+      <form class="support-form">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" required>
+        </div>
 
-    <div class="account-section">
-      <h3>Address Book</h3>
-      <p>Manage your shipping addresses.</p>
-      <a class="btns" href="#">Manage Addresses</a>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" required>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" required></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Send Message</button>
+      </form>
+
+      <div class="contact-info">
+        <h3>Other Ways to Reach Us</h3>
+        <div>
+          <strong>Email:</strong> support@drixdrip.com
+        </div>
+        <div>
+          <strong>Phone:</strong> (02) 1234-5678
+        </div>
+        <div>
+          <strong>Business Hours:</strong> Mon-Fri 9AM-5PM PST
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- Footer -->
-  <footer>
+   <footer>
     <div class="footer-grid">
       <div class="footer-section">
         <strong>CUSTOMER SERVICE</strong><br />
@@ -148,5 +187,30 @@
   </footer>
   
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+   
+
+
+  <script>
+    // FAQ Toggle Functionality
+    document.querySelectorAll('.faq-question').forEach(item => {
+      item.addEventListener('click', () => {
+        const parent = item.parentElement;
+        const answer = parent.querySelector('.faq-answer');
+        const icon = item.querySelector('i');
+        
+        answer.classList.toggle('active');
+        icon.classList.toggle('fa-chevron-up');
+        icon.classList.toggle('fa-chevron-down');
+      });
+    });
+
+    // Form Submission
+    document.querySelector('.support-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      // Add your form submission logic here
+      alert('Thank you for your message! We will respond within 24 hours.');
+      e.target.reset();
+    });
+  </script>
 </body>
 </html>

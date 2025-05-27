@@ -4,6 +4,26 @@
     font-family: 'Poppins', sans-serif;
 }
 
+.navbar-brand {
+  margin-right: 2rem;
+  padding-left: 0;
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.navbar-brand img {
+  width: 85px;
+  height: 85px;
+  margin-right: 10px;
+}
+
+.navbar-nav {
+  margin-right: auto !important;
+  padding-left: 0;
+}
+
 select.form-select {
     padding: 2px 8px;
     font-size: 14px;

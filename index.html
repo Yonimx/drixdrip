@@ -1,53 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Drix Drip Store</title>
-  <link rel="stylesheet" href="header-footer.css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="index.css" />
+  <link rel="stylesheet" href="header-footer.css">
 </head>
-<body>
-  <!-- Topbar -->
-  
 
+<body>
   <!-- Header -->
   <header>
-    
-     <nav class="navbar navbar-expand-lg navbar-light bg-light  p-0 flex-column fixed-top">
-    
-    <!-- Top Bar (Right Aligned) -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light p-0 flex-column fixed-top">
+      <!-- Top Bar (Right Aligned) -->
       <div class="w-100 bg-light py-1 border-bottom">
         <div class="container d-flex justify-content-end align-items-center gap-3 small text-secondary">
           <span><i class="bi bi-globe2 me-1"></i> PH | English</span>
           <span><i class="bi bi-geo-alt me-1"></i> Find A Store</span>
         </div>
       </div>
- 
+
       <div class="container">
         <a class="navbar-brand" href="index.html">
-          <img
-            src="images/logo.png"
-            alt="Logo"
-            width="40"
-            height="40"
-          />
+          <img src="drix icon.png" alt="Logo" />
           Drix Drip Store
         </a>
 
-         
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
           <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -55,31 +38,39 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item active">
-              <a class="nav-link" href="index.html">HOME</a>
+              <a class="nav-link" href="index.html" >HOME</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="men">MEN</a>
+              <a class="nav-link" href="men/men.html">MEN</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">WOMEN</a>
+              <a class="nav-link" href="women/women.html">WOMEN</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="collection/collections.html">COLLECTION</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">SALE</a>
+              <a class="nav-link" href="sale/sale.html">SALE</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about/index.html">ABOUT</a>
             </li>
           </ul>
 
-          <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-            <button class="btn btn-outline-success" type="submit">Search</button>
-          </form>
+          <div class="navbar-utils">
+            <form class="d-flex search-form" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+              <button class="btn btn-outline-dark" type="submit">Search</button>
+            </form>
 
-          <div class="ms-3 d-flex align-items-center">
-            <i class="bi bi-person fs-5 me-3"></i>
-            <i class="bi bi-heart fs-5 me-3"></i>
-            <i class="bi bi-cart fs-5"></i>
+            <div class="icon-group" style="margin-left: 5rem;">
+              <a href="account/Account.html">
+              <i class="bi bi-person fs-5 me-3"></i></a>
+              <a href="wishlist/wishlist.html">
+              <i class="bi bi-heart fs-5 me-3"></i></a>
+              <a href="cart/cart.html">
+              <i class="bi bi-cart fs-5"></i></a>
+            </div>
           </div>
         </div>
       </div>
@@ -87,19 +78,19 @@
   </header>
 
   <!-- Carousel -->
-  <div class="carousel">
-    <img src="images/menf1.png" class="active" />
-    <img src="images/womenblazer.png" />
-    <img src="images/menlongcoat.png" />
+  <div class="carousel"><a href="sale/sale.html">
+    <img src="images/summersale/frontpage-sale.png" class="active" /></a><a href="sale/sale.html">
+    <img src="images/summersale/frontpage-sale2.png" /></a><a href="sale/sale.html">
+    <img src="images/" /></a>
     <button class="carousel-btn">
-      <i class="fa-solid fa-cart-shopping"></i> Shop Now!
+      <i class="fas fa-cart-shopping"></i> Shop Now!
     </button>
     <button class="carousel-nav prev">&#10094;</button>
     <button class="carousel-nav next">&#10095;</button>
     <div class="carousel-dots">
-      <span class="dot active-dot" onclick="goToSlide(0)"></span>
-      <span class="dot" onclick="goToSlide(1)"></span>
-      <span class="dot" onclick="goToSlide(2)"></span>
+      <span class="dot active-dot" data-index="0"></span>
+      <span class="dot" data-index="1"></span>
+      <span class="dot" data-index="2"></span>
     </div>
   </div>
 
@@ -108,12 +99,75 @@
     <div class="carousel-container">
       <button class="carousel-scroll prev">&#10094;</button>
       <div class="carousel-collection">
-        <a href="product/product.html"><div class="collection-item">Product 1</div></a>
-        <div class="collection-item">Product 2</div>
-        <div class="collection-item">Product 3</div>
-        <div class="collection-item">Product 4</div>
-        <div class="collection-item">Product 5</div>
-        <div class="collection-item">Product 6</div>
+        <a href="product/product.html?product=boxy-shirt" class="product-link">
+          <div class="collection-item">
+            <div class="product-image-container">
+              <img src="images/men/p1.png" alt="Men's Product 1" class="product-image">
+            </div>
+            <div class="product-info">
+              <div class="product-name">Boxy Shirt</div>
+              <div class="product-price">₱2499.00</div>
+              <div class="product-colors">3 color options</div>
+              <div class="product-sizes">Sizes: S, M, L, XL</div>
+            </div>
+          </div>
+        </a>
+
+        <a href="product/product.html?product=sports-jacket" class="product-link">
+          <div class="collection-item">
+            <div class="product-image-container">
+              <img src="images/men/p2.png" alt="Men's Product 2" class="product-image">
+            </div>
+            <div class="p-info">
+              <div class="product-name">Sports Jacket</div>
+              <div class="product-price">₱799</div>
+            </div>
+          </div>
+        </a>
+        <a href="product/product.html?product=premium-tshirt" class="product-link">
+          <div class="collection-item">
+            <div class="product-image-container">
+              <img src="images/men/p3.png" alt="Men's Product 3" class="product-image">
+            </div>
+            <div class="product-info">
+              <div class="product-name">Premium T-Shirt</div>
+              <div class="product-price">₱600</div>
+            </div>
+          </div>
+        </a>
+        <a href="product/product.html?product=casual-polo" class="product-link">
+          <div class="collection-item">
+            <div class="product-image-container">
+              <img src="images/men/p4.png" alt="Men's Product 4" class="product-image">
+            </div>
+            <div class="product-info">
+              <div class="product-name">Casual Polo</div>
+              <div class="product-price">₱350</div>
+            </div>
+          </div>
+        </a>
+        <a href="product/product.html?product=cargo-pants" class="product-link">
+          <div class="collection-item">
+            <div class="product-image-container">
+              <img src="images/men/p5.png" alt="Men's Product 5" class="product-image">
+            </div>
+            <div class="product-info">
+              <div class="product-name">Cargo Pants</div>
+              <div class="product-price">₱1,299</div>
+            </div>
+          </div>
+        </a>
+        <a href="product/product.html?product=boxy-sweater" class="product-link">
+          <div class="collection-item">
+            <div class="product-image-container">
+              <img src="images/men/p6.png" alt="Men's Product 6" class="product-image">
+            </div>
+            <div class="product-info">
+              <div class="product-name">Boxy Sweater</div>
+              <div class="product-price">₱699</div>
+            </div>
+          </div>
+        </a>
       </div>
       <button class="carousel-scroll next">&#10095;</button>
     </div>
@@ -126,12 +180,72 @@
     <div class="carousel-container">
       <button class="carousel-scroll prev">&#10094;</button>
       <div class="carousel-collection">
-        <div class="collection-item">Product 1</div>
-        <div class="collection-item">Product 2</div>
-        <div class="collection-item">Product 3</div>
-        <div class="collection-item">Product 4</div>
-        <div class="collection-item">Product 5</div>
-        <div class="collection-item">Product 6</div>
+        <a href="product/product.html?product=classic-jeans" class="product-link">
+          <div class="collection-item">
+            <div class="product-image-container">
+              <img src="images/women/p1.png" alt="Women's Product 1" class="product-image">
+            </div>
+            <div class="product-info">
+              <div class="product-name">Classic Jeans</div>
+              <div class="product-price">₱899</div>
+            </div>
+          </div>
+        </a>
+        <a href="product/product.html?product=denim-jacket" class="product-link">
+          <div class="collection-item">
+            <div class="product-image-container">
+              <img src="images/women/p2.png" alt="Women's Product 2" class="product-image">
+            </div>
+            <div class="product-info">
+              <div class="product-name">Denim Jacket</div>
+              <div class="product-price">₱1,000</div>
+            </div>
+          </div>
+        </a>
+        <a href="product/product.html?product=denim-skirt" class="product-link">
+          <div class="collection-item">
+            <div class="product-image-container">
+              <img src="images/women/p3.png" alt="Women's Product 3" class="product-image">
+            </div>
+            <div class="product-info">
+              <div class="product-name">Denim Skirt</div>
+              <div class="product-price">₱799</div>
+            </div>
+          </div>
+        </a>
+        <a href="product/product.html?product=silk-blouse" class="product-link">
+          <div class="collection-item">
+            <div class="product-image-container">
+              <img src="images/women/p4.png" alt="Women's Product 4" class="product-image">
+            </div>
+            <div class="product-info">
+              <div class="product-name">Silk Blouse</div>
+              <div class="product-price">₱699</div>
+            </div>
+          </div>
+        </a>
+        <a href="product/product.html?product=summer-dress" class="product-link">
+          <div class="collection-item">
+            <div class="product-image-container">
+              <img src="images/women/p5.png" alt="Women's Product 5" class="product-image">
+            </div>
+            <div class="product-info">
+              <div class="product-name">Summer Dress</div>
+              <div class="product-price">₱1,500</div>
+            </div>
+          </div>
+        </a>
+        <a href="product/product.html?product=toupe-tank-top" class="product-link">
+          <div class="collection-item">
+            <div class="product-image-container">
+              <img src="images/women/p6.png" alt="Women's Product 6" class="product-image">
+            </div>
+            <div class="product-info">
+              <div class="product-name">Taupe Tank Top</div>
+              <div class="product-price">₱500</div>
+            </div>
+          </div>
+        </a>
       </div>
       <button class="carousel-scroll next">&#10095;</button>
     </div>
@@ -140,25 +254,29 @@
   <footer>
     <div class="footer-grid">
       <div class="footer-section">
-        <a href="customer/customer.html"><strong>CUSTOMER SERVICE</strong><br /></a>
-        <a href="account.html">My Account</a><br />
-        Customer Support<br />
-        FAQ
+        <strong>CUSTOMER SERVICE</strong>
+        <div class="footer-links">
+          <a href="account.html">My Account</a>
+          <a href="customer-service/customer.html">Customer Support</a>
+          <a href="#">FAQ</a>
+        </div>
       </div>
       <div class="footer-section">
-        <strong>ABOUT</strong><br />
-        Company<br />
-        About Us
+        <strong>ABOUT</strong>
+        <div class="footer-links">
+          <a href="#">Company</a>
+          <a href="#">About Us</a>
+        </div>
       </div>
       <div class="footer-section subscribe">
-        <strong>SIGN UP FOR EMAIL</strong><br />
-        Get Updated on New Releases!<br />
+        <strong>SIGN UP FOR EMAIL</strong>
+        <p>Get Updated on New Releases!</p>
         <input type="email" placeholder="Enter Email" />
         <button>Subscribe</button>
-        <br /><small>Click <a href="#">here</a> to read privacy notice. Or contact us.</small>
+        <small class="privacy-notice">Terms and Conditions<a href="#"></a></small>
       </div>
       <div class="footer-section follow-us">
-        <strong>FOLLOW US</strong><br/>
+        <strong>FOLLOW US</strong>
         <div class="social-icons">
           <a href="https://web.facebook.com/joshuacustodio805"><i class="fab fa-facebook-f"></i></a>
           <a href="#"><i class="fab fa-twitter"></i></a>
@@ -166,13 +284,12 @@
         </div>
       </div>
     </div>
-    <p style="text-align:center; font-size: 12px;">&copy; Drix Drip Store Philippines Inc. 2025. All Rights Reserved.</p>
+    <p style="text-align:center; font-size: 12px;">&copy; Drix Drip Store Philippines Inc. 2025. All Rights Reserved.
+    </p>
   </footer>
 
-  <script src="script.js">
-    
-  </script>
-  
+  <script src="script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

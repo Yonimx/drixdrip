@@ -1,85 +1,52 @@
-const images = document.querySelectorAll('.carousel img');
-const prevBtn = document.querySelector('.carousel-nav.prev');
-const nextBtn = document.querySelector('.carousel-nav.next');
-const dots = document.querySelectorAll('.dot');
-let current = 0;
-let interval;
-
-function showSlide(index) {
-    images[current].classList.remove('active');
-    dots[current].classList.remove('active-dot');
-
-    current = (index + images.length) % images.length;
-
-    images[current].classList.add('active');
-    dots[current].classList.add('active-dot');
-}
-
-function nextSlide() {
-    showSlide(current + 1);
-}
-
-function prevSlide() {
-    showSlide(current - 1);
-}
-
-function goToSlide(index) {
-    showSlide(index);
-    resetAutoSlide();
-}
-
-function startAutoSlide() {
-    interval = setInterval(nextSlide, 3000);
-}
-
-function resetAutoSlide() {
-    clearInterval(interval);
-    startAutoSlide();
-}
-
-prevBtn.addEventListener('click', () => {
-    prevSlide();
-    resetAutoSlide();
+// Simple carousel functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const images = document.querySelectorAll('.carousel img');
+  const dots = document.querySelectorAll('.dot');
+  let currentIndex = 0;
+  
+  function showSlide(index) {
+    images.forEach(img => img.classList.remove('active'));
+    dots.forEach(dot => dot.classList.remove('active-dot'));
+    
+    images[index].classList.add('active');
+    dots[index].classList.add('active-dot');
+    currentIndex = index;
+  }
+  
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % images.length;
+    showSlide(currentIndex);
+  }
+  
+  function prevSlide() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    showSlide(currentIndex);
+  }
+  
+  // Auto-rotate every 5 seconds
+  setInterval(nextSlide, 5000);
+  
+  // Navigation buttons
+  document.querySelector('.carousel-nav.next').addEventListener('click', nextSlide);
+  document.querySelector('.carousel-nav.prev').addEventListener('click', prevSlide);
+  
+  // Dot navigation
+  dots.forEach((dot) => {
+    dot.addEventListener('click', () => {
+      const index = parseInt(dot.getAttribute('data-index'));
+      showSlide(index);
+    });
+  });
+  
+  // Horizontal scroll for product carousels
+  const scrollContainers = document.querySelectorAll('.carousel-collection');
+  const scrollButtons = document.querySelectorAll('.carousel-scroll');
+  
+  scrollButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const direction = this.classList.contains('prev') ? -1 : 1;
+      const container = this.parentElement.querySelector('.carousel-collection');
+      container.scrollBy({ left: direction * 300, behavior: 'smooth' });
+    });
+  });
 });
-
-nextBtn.addEventListener('click', () => {
-    nextSlide();
-    resetAutoSlide();
-});
-
-startAutoSlide();
-
-// Collection carousels functionality
-function setupCarousel(carouselIndex) {
-    const collection = document.querySelectorAll('.carousel-collection')[carouselIndex];
-    const scrollPrev = document.querySelectorAll('.carousel-scroll.prev')[carouselIndex];
-    const scrollNext = document.querySelectorAll('.carousel-scroll.next')[carouselIndex];
-
-    scrollPrev.addEventListener('click', () => {
-    collection.scrollBy({
-        left: -300,
-        behavior: 'smooth'
-    });
-    });
-
-    scrollNext.addEventListener('click', () => {
-    collection.scrollBy({
-        left: 300,
-        behavior: 'smooth'
-    });
-    });
-
-    // Optional: Hide buttons when at scroll extremes
-    collection.addEventListener('scroll', () => {
-    scrollPrev.style.display = collection.scrollLeft <= 10 ? 'none' : 'flex';
-    scrollNext.style.display = collection.scrollLeft + collection.clientWidth >= 
-        collection.scrollWidth - 10 ? 'none' : 'flex';
-    });
-
-    // Initial check
-    scrollPrev.style.display = 'none';
-}
-
-// Initialize both carousels
-setupCarousel(0); // Men's Collection
-setupCarousel(1); // Women's Collection
