@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
         category: "WOMEN",
         sizes: ["XS", "S", "M", "L"],
         colors: ["Sunflower Yellow", "Blush Pink"],
-        image: "../images/collection/p4.jpg",
+        image: "../images/collection/p4.avif",
         productKey: "linen-midi-dress",
         description: "Breathable European flax linen dress with hidden side pockets and adjustable self-tie belt.",
         reviews: 412,
