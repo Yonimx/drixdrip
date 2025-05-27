@@ -362,7 +362,7 @@ const products = {
         inStock: true
     },
     "vintage-slim-jeans": {
-        img: "../images/collection/p2.jpg",
+        img: "../images/collection/p2.avif",
         name: "90s Vintage Slim Jeans",
         category: "WOMEN",
         reviews: 367,
