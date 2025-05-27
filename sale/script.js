@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Sample product data
             const products = [
   {
-    id: 1,
+    id: "breathable-linen-shirt",
     title: "Breathable Linen Shirt",
     price: 2499,
     discount: 15,
