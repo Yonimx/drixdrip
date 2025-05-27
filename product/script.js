@@ -392,7 +392,7 @@ const products = {
         inStock: true
     },
     "linen-midi-dress": {
-        img: "../images/collection/p4.jpg",
+        img: "../images/collection/p4.avif",
         name: "Linen Midi Dress",
         category: "WOMEN",
         reviews: 412,
