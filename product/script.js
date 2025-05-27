@@ -377,7 +377,7 @@ const products = {
         inStock: true
     },
     "performance-bomber": {
-        img: "../images/collection/p3.jpg",
+        img: "../images/collection/p3.avif",
         name: "Aero Performance Bomber",
         category: "MEN",
         reviews: 198,
