@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
         category: "MEN",
         sizes: ["S", "M", "L", "XL", "XXL"],
         colors: ["Racing Red", "Nautical Blue"],
-        image: "../images/collection/p3.jpg",
+        image: "../images/collection/p3.avif",
         productKey: "performance-bomber",
         description: "Wind-resistant jacket with laser-cut ventilation panels and reflective detailing for urban cycling or adventures.",
         reviews: 198,
