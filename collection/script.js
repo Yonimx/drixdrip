@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
         category: "MEN",
         sizes: ["S", "M", "L", "XL"],
         colors: ["Eucalyptus Green", "Navy"],
-        image: "../images/collection/p5.jpg",
+        image: "../images/collection/p5.avif",
         productKey: "merino-polo",
         description: "Temperature-regulating polo with mother-of-pearl buttons that wicks moisture three times faster than cotton.",
         reviews: 231,
