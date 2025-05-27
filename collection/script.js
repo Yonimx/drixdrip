@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
         category: "WOMEN",
         sizes: ["24", "25", "26", "27", "28", "29", "30"],
         colors: ["Vintage Indigo", "Midnight Black"],
-        image: "../images/collection/p2.jpg",
+        image: "../images/collection/p2.avif",
         productKey: "vintage-slim-jeans",
         description: "Hand-dyed using traditional indigo methods for authentic vintage fading with hidden stretch panels for comfort.",
         reviews: 367,
