@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
     inStock: true
   },
   {
-    id: 2,
+    id: "graphic-tank-top",
     title: "Graphic Tank Top",
     price: 1299,
     discount: 10,
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
     inStock: true
   },
   {
-    id: 3,
+    id: "cropped-cotton-tee",
     title: "Cropped Cotton Tee",
     price: 1499,
     discount: 20,
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
     inStock: true
   },
   {
-    id: 4,
+    id: "distressed-denim-shorts",
     title: "Distressed Denim Shorts",
     price: 1999,
     discount: 25,
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
     inStock: true
   },
   {
-    id: 5,
+    id: "relaxed-linen-pants",
     title: "Relaxed Fit Linen Pants",
     price: 2799,
     discount: 15,
@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
     inStock: true
   },
   {
-    id: 6,
+    id: "flowy-maxi-skirt",
     title: "Flowy Maxi Skirt",
     price: 2399,
     discount: 10,
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
     inStock: true
   },
   {
-    id: 7,
+    id: "mini-sundress",
     title: "Mini Sundress",
     price: 2599,
     discount: 20,
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
     inStock: true
   },
   {
-    id: 8,
+    id: "slip-dress",
     title: "Slip Dress",
     price: 2899,
     discount: 15,
@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', function() {
     inStock: true
   },
   {
-    id: 9,
+    id: "slide-sandals",
     title: "Slide Sandals",
     price: 999,
     discount: 10,
@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', function() {
     inStock: true
   },
   {
-    id: 10,
+    id: "straw-bucket-hat",
     title: "Straw Bucket Hat",
     price: 799,
     discount: 5,
