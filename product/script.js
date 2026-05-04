@@ -190,7 +190,7 @@ const products = {
         sizes: ["Standard"],
         colors: ["Charcoal Black", "Ecru White"],
         material: "Organic Cotton Canvas",
-        description: "Our signature 18oz canvas tote with military-grade stitching and vegetable-tanned leather accents. Water-resistant base keeps essentials dry while the structured silhouette maintains its shape.",
+        description: "Our signature 18oz canvas tote with military-grade stitching and vegetable-tanned leather accents. Water-resistant base keeps essentials dry while the structured silhouette [...]",
         limitedEdition: true
     },
     // ... other existing products ...
@@ -457,6 +457,96 @@ if (product) {
     const stars = "★".repeat(product.rating) + "☆".repeat(5 - product.rating);
     document.querySelector('.text-yellow-400').textContent = stars;
 }
+
+// Add to Cart functionality
+function addToCart() {
+    if (!product) return;
+    
+    // Get selected size and quantity
+    const sizeSelect = document.querySelector('select');
+    const quantityInput = document.querySelector('input[type="number"]');
+    
+    const size = sizeSelect.value;
+    const quantity = parseInt(quantityInput.value);
+    
+    // Get existing cart from localStorage or create new
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+    // Create cart item
+    const cartItem = {
+        id: productKey,
+        name: product.name,
+        price: product.price,
+        img: product.img,
+        size: size,
+        quantity: quantity,
+        category: product.category
+    };
+    
+    // Check if item already exists in cart
+    const existingItem = cart.find(item => item.id === productKey && item.size === size);
+    
+    if (existingItem) {
+        existingItem.quantity += quantity;
+    } else {
+        cart.push(cartItem);
+    }
+    
+    // Save to localStorage
+    localStorage.setItem('cart', JSON.stringify(cart));
+    
+    // Show success message
+    alert(`${product.name} added to cart!`);
+    
+    // Optional: Reset quantity input
+    quantityInput.value = 1;
+}
+
+// Add to Wishlist functionality
+function addToWishlist() {
+    if (!product) return;
+    
+    // Get existing wishlist from localStorage or create new
+    let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+    
+    // Create wishlist item
+    const wishlistItem = {
+        id: productKey,
+        name: product.name,
+        price: product.price,
+        img: product.img,
+        category: product.category
+    };
+    
+    // Check if item already exists in wishlist
+    const existingItem = wishlist.find(item => item.id === productKey);
+    
+    if (existingItem) {
+        // Remove from wishlist if already exists
+        wishlist = wishlist.filter(item => item.id !== productKey);
+        alert(`${product.name} removed from wishlist.`);
+    } else {
+        wishlist.push(wishlistItem);
+        alert(`${product.name} added to wishlist!`);
+    }
+    
+    // Save to localStorage
+    localStorage.setItem('wishlist', JSON.stringify(wishlist));
+}
+
+// Attach event listeners to buttons
+document.addEventListener('DOMContentLoaded', function() {
+    const addToCartBtn = document.querySelector('button.bg-black');
+    const addToWishlistBtn = document.querySelector('button.border');
+    
+    if (addToCartBtn) {
+        addToCartBtn.addEventListener('click', addToCart);
+    }
+    
+    if (addToWishlistBtn) {
+        addToWishlistBtn.addEventListener('click', addToWishlist);
+    }
+});
 
 // Randomize "You may also like"
 function getRandomProducts(productsObj, excludeKey, category, count = 3) {
