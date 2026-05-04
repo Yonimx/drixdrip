@@ -39,17 +39,6 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   
   // Horizontal scroll for product carousels
-  const scrollContainers = document.querySelectorAll('.carousel-collection');
-  const scrollButtons = document.querySelectorAll('.carousel-scroll');
-  
-  scrollButtons.forEach(button => {
-    button.addEventListener('click', function() {
-      const direction = this.classList.contains('prev') ? -1 : 1;
-      const container = this.parentElement.querySelector('.carousel-collection');
-      container.scrollBy({ left: direction * 300, behavior: 'smooth' });
-    });
-  });
-  
   document.querySelectorAll('.carousel-container').forEach(container => {
     const carousel = container.querySelector('.carousel-collection');
     const items = carousel.querySelectorAll('.collection-item');
@@ -59,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
       if (index < 0) index = 0;
       if (index >= items.length) index = items.length - 1;
       currentIndex = index;
-      items[index].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      items[index].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
     }
 
     container.querySelector('.carousel-scroll.prev').addEventListener('click', () => {
@@ -70,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
       scrollToIndex(currentIndex + 1);
     });
 
-    // Optional: Snap to the closest item on scroll end (for touch)
+    // Snap to the closest item on scroll end (for touch/drag)
     carousel.addEventListener('scroll', () => {
       clearTimeout(carousel._scrollTimeout);
       carousel._scrollTimeout = setTimeout(() => {
@@ -78,14 +67,15 @@ document.addEventListener('DOMContentLoaded', function() {
         let minDiff = Infinity;
         items.forEach((item, i) => {
           const rect = item.getBoundingClientRect();
-          const diff = Math.abs(rect.left + rect.right - window.innerWidth) / 2;
+          const containerRect = carousel.getBoundingClientRect();
+          const diff = Math.abs(rect.left - containerRect.left);
           if (diff < minDiff) {
             minDiff = diff;
             closest = i;
           }
         });
-        scrollToIndex(closest);
-      }, 100);
+        currentIndex = closest;
+      }, 150);
     });
   });
 });

@@ -86,4 +86,35 @@ function updateSummary(cart) {
 }
 
 // Load cart when page loads
-document.addEventListener('DOMContentLoaded', displayCart);
+document.addEventListener('DOMContentLoaded', () => {
+    displayCart();
+
+    // Sync modal total when modal is about to show
+    const checkoutModal = document.getElementById('checkoutModal');
+    if (checkoutModal) {
+        checkoutModal.addEventListener('show.bs.modal', () => {
+            const totalEl = document.getElementById('summary-total');
+            const modalTotal = document.getElementById('modal-total');
+            if (totalEl && modalTotal) {
+                modalTotal.textContent = totalEl.textContent;
+            }
+        });
+    }
+
+    // Confirm checkout button action
+    const confirmBtn = document.getElementById('confirm-checkout-btn');
+    if (confirmBtn) {
+        confirmBtn.addEventListener('click', () => {
+            // Clear cart
+            localStorage.removeItem('cart');
+            // Close modal then show success feedback
+            const modal = bootstrap.Modal.getInstance(document.getElementById('checkoutModal'));
+            modal.hide();
+            // Show a simple success alert
+            setTimeout(() => {
+                alert('✅ Thank you for your order! Your checkout was successful.');
+                displayCart(); // refresh to show empty cart
+            }, 300);
+        });
+    }
+});
